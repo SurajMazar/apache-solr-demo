@@ -9,12 +9,14 @@ services:
       - ZK_HOST=zoo1:2181
     volumes:
       - './solr:/var/solr'
+      - './config/security.json:/security.json'
     networks:
       - solr
     depends_on:
       - zoo1
 
   zoo1:
+    tty: true
     image: zookeeper:3.7.2
     container_name: zoo1
     restart: always
